@@ -1,0 +1,9 @@
+<%= form_for(@user) do |f| %>
+<%= f.label :first %>
+<%= f.text_field :first %>
+<%= f.label :last %>
+<%= f.text_field :last %>
+<%= f.label :school; %>
+<%= f.select(:user, :school_id, options_from_collection_for_select(@schools, :id, :name)) %>
+<%= f.submit %>
+<% end %>

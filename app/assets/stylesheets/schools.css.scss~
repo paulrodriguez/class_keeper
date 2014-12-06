@@ -1,0 +1,19 @@
+// Place all the styles related to the Schools controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.submit_button {
+	       font-size: 1em;
+	       width: 100%;
+}
+
+@media (max-width:649px) {
+       form {
+         width: 100%;
+	 border: solid 1px;
+       }
+       .submit_button {
+          font-size: 0.6em;
+	  width: 100%;         
+       }
+}

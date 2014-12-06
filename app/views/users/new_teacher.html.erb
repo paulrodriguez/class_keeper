@@ -1,0 +1,31 @@
+<%= form_for(@teacher, url: { action: 'create_teacher' }) do |f| %>
+
+<%= f.hidden_field :user_type, :value => 1 %>
+<div>
+  <div class="form_label"> <%= f.label :first %></div>
+  <%= f.text_field :first %>
+</div>
+<div>
+  <div class="form_label"> <%= f.label :last %></div>
+  <%= f.text_field :last %>
+</div>
+<div>
+  <div class="form_label"> <%= f.label :school %></div>
+  <%= f.collection_select :school_id, @schools, :id, :name %>
+</div>
+<div>
+  <div class="form_label"><%= f.label :email %></div>
+  <%= f.text_field :email %>
+</div>
+<div>
+  <div class="form_label"><%= f.label :password %> </div>
+  <%= f.password_field :password %>
+</div>
+<div>
+  <div class="form_label"><%= f.label :confirm_password %></div>
+  <%= f.password_field :password_confirmation %>
+</div>
+<%= f.submit :class => 'submit_button' %>
+
+<% end %>
+</div>

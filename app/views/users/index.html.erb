@@ -1,0 +1,17 @@
+<div>
+  welcome to users index page
+</div>
+
+<div style="display:block">
+  <% @users.each do |user| %>
+  <div style="border-bottom:solid 2px blue">
+    <div>name: <%= user[:last] + ', ' + user[:first] %></div>
+    <div>User Type: <%= user.teacher.nil? ? 'Student' : 'Teacher' %> </div>
+    <div>School: <%= user[:school] %></div>
+  </div>
+  <% end %>
+</div>
+<div>
+  are you a teacher? <%= link_to 'Register', new_teacher_path %>
+  are you a student? <%= link_to 'Register', new_student_path %>
+</div>

@@ -1,0 +1,59 @@
+// Place all the styles related to the Schools controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+form {
+     width: 80%;
+     div {
+     	 width: 80%;
+     }
+
+     .form_label {
+         width: 30%;
+	 text-align:right;
+	 display: inline-block;
+     }
+
+     .field_with_errors {
+         display:inline;
+     }
+
+     input {
+     	 width: 50%;
+	 font-size:1.5em;
+     }
+
+     .submit_button {
+         background: #248F24;
+	 border-radius: 0.4em;
+	 width: 20%;
+	 color:white;
+	 margin-left: 30%;
+     }
+     
+     .submit_button:hover {
+         background: linear-gradient(to bottom, #70DB70, #33CC33)
+     }
+}
+
+
+@media (max-width:649px) {
+       form {
+         width: 100%;
+	 border: solid 1px;
+	 div {
+	     width: 100%;
+	 }
+	 .form_label {
+	     width: 30%;
+	 }
+	 input {
+	       width: 60%;
+	 }
+       
+	 .submit_button {
+	    width: 100%;
+	    margin-left: 0%;         
+         }
+	}
+}

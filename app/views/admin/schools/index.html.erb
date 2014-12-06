@@ -1,0 +1,9 @@
+<div>schools index page</div>
+
+<% @schools.each do |f| %>
+	<div style="border-bottom:solid 2px blue">
+		<div>School Name: <%= f[:name] %></div>
+		<div>Location: <%= f[:city] +", "+f[:state] +" " +f[:country] %></div>
+	</div>
+
+<% end %>
