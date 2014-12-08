@@ -1,0 +1,82 @@
+<%= @user.inspect %>
+<h1>User: <%= @user[:last] + ", " + @user[:first]%> (<%= @user[:id] %>)</h1>
+
+<div>
+	<div class='form_label'>Registration Date</div>
+	<%= @user[:created_at]%>
+</div>
+
+
+<div>
+	<div class='form_label'>Last Updated</div>
+	<%= @user[:updated_at] %>
+</div>
+<%= form_for(@user, url: { action: 'update'}, html: {id: 'updateUserForm'}) do |f| %>
+
+<%= f.hidden_field :user_type %>
+
+<div>
+  <div class="form_label"><%= f.label :first_name %></div>
+  <%= f.text_field :first %>
+  <label class='first-error user-error'></label>
+</div>
+
+<div>
+  <div class="form_label"><%= f.label :last_name %></div>
+  <%= f.text_field :last %>
+  <label class='last-error user-error'></label>
+</div>
+
+<div>
+	<div class="form_label"><%= f.label :email %></div>
+	<%= f.text_field :email %>
+	<label class='email-error user-error'></label>
+</div>
+
+<div>
+  <div class="form_label"><%= f.label :school %></div>
+  <%= f.collection_select :school_id, @schools, :id, :name %>
+  <label class='school_id-error user-error'></label>
+</div>
+
+<div>
+	<div class="form_label"><%= f.label :password %></div>
+	<%= f.password_field :password %>
+	<label class='password-error user-error'></label>
+</div>
+
+<div>
+	<div class="form_label"><%= f.label :confirm_password %></div>
+	<%= f.password_field :password_confirmation %>
+	<label class='password_confirmation-error user-error'></label>
+</div>
+<div class='message label-success'></div>
+<%= f.submit :class => 'submit_button' %>
+
+<% end %>
+
+<script type="text/javascript">
+$("#updateUserForm").on("submit", function(e) {
+e.preventDefault();
+var oThis = $(this);
+	$.ajax({
+		url: oThis.attr("action"),
+		data: oThis.serializeArray(),
+		dataType: "JSON",
+		method: "POST",
+		success: function(response) {
+			if(response.success) {
+				$("label.user-error").empty();
+				$("div.message").html('<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>'+response.message);
+				$("div.message").fadeIn();
+				setTimeout(function() {$("div.message").fadeOut(); $("div.message").empty();}, 10000);
+			} else {
+				$("label.user-error").empty();
+				$.each(response.errors, function(i,e) {
+					$("label."+i+"-error").html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+ e.join('; '));
+				});
+			}
+		}
+	});
+});
+</script>

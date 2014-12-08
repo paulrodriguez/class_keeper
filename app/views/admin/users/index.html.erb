@@ -1,0 +1,56 @@
+<script type='text/javascript'>
+function remove_elem(elem) {
+	console.log(elem)
+}
+</script>
+<div>
+<h4>Manage Users</h4>
+</div>
+<table class="table table-hover table-list">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Occupation</th>
+			<th>School</th>
+			<th>View</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+  <% @users.each do |user| %>
+  	<tr>
+  		<td><%= user[:id] %></td>
+	    <td><%= user[:last] + ', ' + user[:first] %></td>
+	    <td><%= user.teacher.nil? ? 'Student' : 'Teacher' %></td>
+	    <td><%= user.school.nil? ? '' : user.school[:name] %></td>
+	    <td><a href='<%= admin_user_path(user) %>'><i class='fa fa-eye'></i></a></td>
+	    <td>
+	    	<%= link_to '<i class="fa fa-trash"></i>'.html_safe, admin_user_path(user[:id]),'data-type'=>'json', method: :delete, remote: true, :class=> 'delete', :confirm=>'Are you sure you want to delete this user?' %>
+	    	
+	    	
+	    </td>
+  </tr>
+  <% end %>
+	</tbody>
+</table>
+
+<script type='text/javascript'>
+$(document).ready(
+     function(){
+          $("a.delete").bind("ajax:success",
+                   function(evt, data, status, xhr){
+                        //this assumes the action returns an HTML snippet
+                        
+                        $(this).closest("tr").remove();
+                        
+           }).bind("ajax:error", function(evt, data, status, xhr){
+                    //do something with the error here
+                    //$("div#errors p").text(data);
+           });
+});
+
+</script>
+
+
+	

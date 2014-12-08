@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-
+  #displays information for all users
   def index
     @users = User.all
   end
-
+  # this will get the information for one user
   def show
 
   end
@@ -31,7 +31,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @student.save
         @student_table_save = @student.create_student
-        redirect_to users_path
+        format.html do
+          redirect_to root_path
+        end
       else
         @schools = School.all
         format.html { render action: 'new_student' }
@@ -41,6 +43,7 @@ class UsersController < ApplicationController
 
   def create_teacher
     @teacher = User.new(user_params)
+
     respond_to do |format|
       if @teacher.save
         @teacher_table_save = @teacher.create_teacher

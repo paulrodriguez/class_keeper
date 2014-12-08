@@ -3,12 +3,31 @@
 <html>
 <head>
   <title>Admin Backend</title>
- 
+ 	<%= stylesheet_link_tag    "admin", media: "all", "data-turbolinks-track" => true %>
+ 	<%= stylesheet_link_tag    "font-awesome/css/font-awesome.min", media: "all", "data-turbolinks-track" => true %>
+ 	<%= javascript_include_tag "application", media: "all", "data-turbolinks-track"=> true %>
   <%= csrf_meta_tags %>
 </head>
 
 <body>
-  <%= yield %>
+	<header>
+		<h4>Class Keeper Admin Page</h4>
+	</header>
+	<section id='nav-sidebar'>
+		<ul>
+			<li><a href="<%= admin_schools_path %>"><i class='fa fa-university'></i> Schools</a></li>
+			<li><a href="<%= admin_users_path %>"><i class='fa fa-users'></i> Users</a>
+				<ul class='subnav-two'>
+					<li><a href="<%= teachers_admin_users_path %>"><i class='fa fa-graduation-cap'></i> Teachers</a></li>
+					<li><a href="<%= students_admin_users_path %>"><i class='fa fa-user'></i> Students</a></li>
+				</ul>
+			</li>
+		
+		</ul>
+	</section>
+	<div id='page-wrapper'>
+  		<%= yield %>
+	</div>
 </body>
 
 </html>

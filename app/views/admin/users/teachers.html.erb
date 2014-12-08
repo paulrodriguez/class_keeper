@@ -1,0 +1,21 @@
+
+<table class='table table-bordered table-hover table-list'>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>View</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+<% @teachers.each do |teacher| %>
+<% account_info = teacher.account %>
+	<tr>
+		<td><%= teacher.user_id %></td>		
+		<td><%= account_info[:last] + ', ' + account_info[:first] %></td>
+		<td><a href='<%= admin_user_path(account_info) %>'><i class='fa fa-eye'></i></a></td>
+	</tr>
+<% end %>
+</tbody>
+<table>

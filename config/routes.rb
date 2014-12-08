@@ -6,7 +6,17 @@ ClassKeeper::Application.routes.draw do
   resource :users
   #resource :schools
   namespace :admin do
+    root to: 'home#index'
+    resources :home do
+    end
     resources :schools do
+    end
+    resources :users do
+      collection do
+        get 'students'
+        get 'teachers'
+        post 'edit_user'
+      end
     end
   end
   root 'users#index' 

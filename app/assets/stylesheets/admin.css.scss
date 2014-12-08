@@ -1,0 +1,104 @@
+// app/assets/stylesheets/application.css.sass
+
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+	padding: 0 20px;
+}
+header {
+	h4 {
+		color: #356FA2;
+		font-size: 16pt;
+		font-weight: bold;
+		padding: 1em 0;
+		font-family: Impact, Charcoal, sans-serif;
+	}
+}
+
+
+#nav-sidebar {
+	position:fixed;
+	width: 180px;
+	border-right: solid 1px #E8E86C;
+	border-top: solid 1px #E8E86C;
+	border-left: solid 1px #E8E86C;
+
+	ul {
+		padding:0;
+
+		li {
+			list-style: none;
+			font-family: "Courier New", Courier, monospace;
+
+			ul.subnav-two {
+				li a {
+					padding-left: 20px;
+					font-size: 16pt;
+
+				}
+			}
+			a {
+				text-decoration: none;
+				color: black;
+				
+				display:block;
+				padding: 5px 0;
+			}
+			
+			a:hover {
+				background-color: #75FFD1;
+				color: #A31919;
+			}
+			
+		}
+
+	}
+	ul > li > a  {
+		font-size:18pt;
+	}
+	 
+	 
+
+}
+
+
+#page-wrapper {
+	margin-left: 200px;
+
+	.table-list {
+		thead {
+			background-color: black;
+			color: white;
+		}
+	}
+}
+
+i.fa.fa-eye {
+	font-size:20pt;
+	color: black;
+}
+
+i.fa.fa-trash {
+	font-size:20pt;
+	color: red;
+}
+
+#updateUserForm {
+	label.user-error {
+		color: red;
+		font-size: 12pt;
+		.glyphicon {
+			padding-right:0.5em;
+		}
+	}
+	div.message {
+		font-size: 12pt;
+		.glyphicon {
+			padding-right: 0.5em;
+		}
+	}
+
+}
